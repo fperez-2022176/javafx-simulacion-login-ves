@@ -1,9 +1,11 @@
 package com.ferdyperez.controller;
 
+import com.ferdyperez.view.BienvenidaView;
 import com.ferdyperez.view.LoginView;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -54,6 +56,29 @@ public class SceneManager {
         }
         
         
+    }
+    
+    public void ventanaBienvenida(){
+        try {
+          this.escenarioSecundario = new Stage();
+          this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+          this.escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
+          
+          BienvenidaView bienvenida = new BienvenidaView();
+          this.escenaPrincipal = new Scene(bienvenida, 15, 25);
+          
+          this.escenarioSecundario.setScene(escenarioPrincipal);
+          this.escenarioSecundario.sizeToScene();
+          this.escenarioSecundario
+            
+        } catch (NullPointerException objetoNulo) {
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo: Ventana login");
+            objetoNulo . printStackTrace();
+                            
+        }catch(Exception errorPadre){
+            JOptionPane.showMessageDialog(null, "Error padre; Ventana Login");
+            errorPadre.printStackTrace();
+        }
     }
     
     public static SceneManager getInstanciaSceneManager() {
